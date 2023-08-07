@@ -1,0 +1,72 @@
+Reomendaciones Jorge Carmona:
+    pasos para crear permiso personalizado: 
+    
+    1- Colocar la siguiente sentencia dentro de tu clase en models:  #permisos
+        class Meta:
+            permissions = (("visualizar_questions", "Visualizar las preguntas"),)
+
+    2- correr los comandos makemigrate y migrate
+    3- aplicar en la funcion elegida que renderiza lo que quieres controlar:
+        @permission_required('encuestas_app.visualizar_questions', raise_exception=True)
+
+    tip: si quieres mostrar/no mostrar un link o algun elemento en tu template, puedes hacerlo asi: {% if user.is_authenticated and perms.tu_modelo.nombre_permiso %} <p>lo que quieras controlar</p>{%endif%}
+
+VIEWS APP:
+    path('login/', views.login_view, name="login"),
+    path('logout/', views.logout_view, name="logout"),
+    path('registro/', views.registro_view, name="registro"),
+    path('<int:question_id>/details/encuestas_geniales/2023',views.detail, name="detail"),
+    path('<int:question_id>/results', views.results, name="results"),
+    path('<int:question_id>/votes', views.votes, name="votes"),
+
+
+# Static files (CSS, JavaScript, Images)
+# https://docs.djangoproject.com/en/4.2/howto/static-files/
+
+STATIC_URL = 'static/'
+
+LOGIN_URL = '/signin/' # esta se agrega para limitar los login (Marco Espinoza)
+
+
+TIPS ENTREGADO POR MARCOS:
+pip freeze > requirements.txt
+pip install -r requirements.txt
+
+REVISAR IMPLEMENTACIÓN DE: {% extends %}
+
+########################
+######  YOU.COM  ######:
+########################
+
+class Vehiculo:
+    def __init__(self, marca, modelo, anio):
+        self.marca = marca
+        self.modelo = modelo
+        self.anio = anio
+
+def catalogar(vehiculos):
+    for v in vehiculos:
+        print(f"{type(v).__name__} - {v.marca} {v.modelo} ({v.anio})")
+
+# creación de lista de vehículos de ejemplo
+vehiculos = [
+    Vehiculo("Toyota", "Corolla", 2015),
+    Vehiculo("Honda", "Civic", 2018),
+    Vehiculo("Ford", "Mustang", 2020),
+]
+
+# llamar a la función catalogar con la lista de vehículos
+catalogar(vehiculos)
+
+# Función anidada en HTML:
+<td>
+    {% if vehiculo.precio >= 0 and vehiculo.precio < 10000 %} 
+        <td>Bajo</td>
+    {% elif vehiculo.precio >= 10000 and vehiculo.precio < 30000 %} 
+        <td>Medio</td>
+    {% elif vehiculo.precio > 30000 %} 
+        <td>Alto</td> 
+    {% else %}
+        <td>Negativo</td>
+    {% endif %}    
+</td>

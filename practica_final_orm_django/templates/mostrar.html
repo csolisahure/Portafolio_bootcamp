@@ -1,0 +1,53 @@
+<header class="bg-body-tertiary">
+    {% include 'navbar.html' %}
+</header>
+
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% load crispy_forms_tags %}
+
+
+<div class="container-fluid text-center mt-4">
+    <h2 class="fs-1 text-center fw-bold"> Información de Laboratorios </h2>
+</div>
+
+<!-- Mostrar listado de Laboratorios -->
+{% block content %}
+<div class="container-fluid text-center mt-4">
+    <table method="POST" class="table table-dark">
+        <thead>
+            <tr>
+                <td>NOMBRE</td>
+                <td>CIUDAD</td>
+                <td>PAIS</td>
+                <td>EDITAR</td>
+                <td>ELIMINAR</td>
+            </tr>
+        </thead>
+        <tbody>
+            {% for laboratorio in laboratorios %}
+            <tr>
+                <td>{{ laboratorio.nombre }}</td>
+                <td>{{ laboratorio.ciudad }}</td>
+                <td>{{ laboratorio.pais }}</td>
+                <td><a href="{% url 'laboratorio:editar_labs' laboratorio.pk %}">Actualizar</a></td>
+                <td><a href="{% url 'laboratorio:eliminar_labs' laboratorio.pk %}">Eliminar</a></td>
+                <!-- <td><a href="{% url 'laboratorio:eliminar_labs' laboratorio.pk %}">Eliminar</a></td> -->
+            </tr>
+            {% endfor %}
+        <tbody>
+
+    </table>
+    <br>
+    <div class="alert alert-danger" role="alert">
+        ¿Quieres ingresar más Laboratorios?
+    </div>
+    
+    <p>
+        <a href="{% url 'laboratorio:agregar_labs' %}"> <-- Ingresa aquí </a>
+    </p>
+</div>
+{% endblock%}
+
+

@@ -1,0 +1,25 @@
+<header class="bg-body-tertiary">
+    {% include 'navbar.html' %}
+</header>
+
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
+{% block content %}
+{% load crispy_forms_tags %}
+
+<!--Registro-->
+<div class="container-fluid mt-4">
+    <h2> Agregar Vehiculo </h2>
+</div>
+
+<div class="container py-5">
+    <form method="POST">
+        {% csrf_token %}
+        {{ forms|crispy }}
+        <button class="btn btn-primary" type="submit"> Enviar </button>
+    </form>
+</div>
+
+{% endblock%}

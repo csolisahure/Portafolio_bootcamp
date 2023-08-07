@@ -1,0 +1,112 @@
+body {
+    margin: 0px auto;
+    font-family: Arial, Helvetica, sans-serif;
+    background-image: url(https://i.pinimg.com/564x/e3/e0/34/e3e03434e096cd020381481570b95a7a.jpg);
+    background-color: #cccccc;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+nav {
+    /* Estilos para la barra de navegación */
+    text-align: center;
+}
+
+h1 {
+    text-align: center;
+}
+
+.digimon-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+
+}
+
+.list {
+    flex: 1;
+    max-width: 400px;
+}
+
+.details {
+    flex: 1;
+    max-width: 600px;
+    color: white;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    cursor: pointer;
+    padding: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+}
+
+li:hover {
+    background-color: #f0f0f0;
+}
+
+img {
+    max-width: 100px;
+    display: block;
+    margin: 0 auto;
+}
+
+#digimon-details {
+    text-align: center;
+    padding: 20px;
+    background-color: whitesmoke;
+}
+
+#logo {
+    width: 180px;
+}
+
+.digimon-title {
+    font-size: 50px;
+    text-align: center;
+}
+
+#digimon-list {
+    background-color: whitesmoke;
+}
+
+.digimon-text {
+    text-align: center;
+    font-size: 30px;
+    position: relative;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+}
+
+.table {
+    background-color: white;
+    opacity: 0.9;
+    border: 2px;
+    color: black;
+}
+
+/* Desplazamiento de registros en tabla */
+.table-wrapper {
+    /* Altura máxima de tabla */
+    max-height: 500px;
+    /* Desplazamiento vertical de tabla */
+    overflow-y: auto;
+}
+
+.table-fixed thead {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color: #343a40;
+    color: white;
+}

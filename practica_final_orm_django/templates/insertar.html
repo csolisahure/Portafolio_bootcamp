@@ -1,0 +1,21 @@
+<header class="bg-body-tertiary">
+    {% include 'navbar.html' %}
+</header>
+
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% load crispy_forms_tags %}
+
+
+{% block content %}
+<!-- Agregar nuevos Laboratorios -->
+<div class="container py-5"> 
+    <h1> Agregar datos de Laboratorio </h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary" action="{% url 'laboratorio:mostrar_labs' %}"> Guardar </button>
+    </form>
+</div>
+{% endblock%}

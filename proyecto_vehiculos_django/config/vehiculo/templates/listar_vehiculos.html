@@ -1,0 +1,48 @@
+<header class="bg-body-tertiary">
+    {% include 'navbar.html' %}
+</header>
+
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="container-fluid text-center mt-4">
+    <h2> Catálogo de Vehículos </h2>
+</div>
+
+<div class="container">
+    <table method="POST" class="table table-dark">
+        {% csrf_token %}
+        <thead>
+            <tr>
+                <th scope="col"> Marca </th>
+                <th scope="col"> Modelo </th>
+                <th scope="col"> Serial Carroceria </th>
+                <th scope="col"> Serial Motor </th>
+                <th scope="col"> Categoría </th>
+                <th scope="col"> Precio </th>
+                <th scope="col"> Condición de Precio </th>
+            </thead>
+            <tbody>
+                {% for vehiculo in vehiculos %}
+                </tr>
+                    <td> {{ vehiculo.marca }} </td>
+                    <td> {{ vehiculo.modelo }} </td>
+                    <td> {{ vehiculo.serial_carroceria }} </td>
+                    <td> {{ vehiculo.serial_motor }} </td>
+                    <td> {{ vehiculo.categoria }} </td>
+                    <td> {{ vehiculo.precio }} </td>
+                    <td> {{ vehiculo.condicion_precio }} </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+    </table>
+</div>
+{% endblock%}
+
+
+<!-- {% if user.is_authenticated %}
+{% else %}
+{% endif %} -->
